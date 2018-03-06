@@ -1,10 +1,8 @@
-"use strict"
-
 /**
  * 验证规则
  * @type {Object}
  */
-var regx = {
+const regx = {
   url: /^((https|http):\/\/)(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/,
   email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   phone: /^((0[0-9]{2,3}-?)?)[2-9][0-9]{6,7}$/,
@@ -14,15 +12,14 @@ var regx = {
   ip: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/
 };
 
+/**
+ * 统一验证函数
+ * @param {String} value - 被验证的值
+ * @param {String} type  - 被验证的类型
+ * @returns {Boolean}
+ */
+ const validate = (value, type) => {
+  return regx[type].test(value);
+}
 
-module.exports = {
-  /**
-   * 统一验证函数
-   * @param {String} value - 被验证的值
-   * @param {String} type  - 被验证的类型
-   * @returns {Boolean}
-   */
-  validate: function (value, type) {
-    return regx[type].test(value);
-  }
-};
+export default validate

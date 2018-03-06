@@ -7,12 +7,10 @@
 const formatURL = (url, params) => {
   params = params || {};
   for (var key in params) {
-    var reg = new RegExp(':' + key, 'g');
+    var reg = new RegExp(":" + key, "g");
     url = url.replace(reg, params[key]);
   }
-  return url.replace(/[^:]\/\//g, '/');
+  return url.replace(/[^:]\/\//g, "/");
 };
 
-module.exports = {
-  formatURL,
-};
+export { formatURL };
